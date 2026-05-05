@@ -5,7 +5,7 @@
 .claude/
 tools/
 
-# Linkmap client markers (F:\500_Develop project convention)
+# Linkmap client markers (workspace convention)
 *.client
 
 # Python artifacts
