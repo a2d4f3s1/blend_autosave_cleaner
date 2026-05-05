@@ -1,0 +1,37 @@
+# Track only the Extension itself (blend_autosave_cleaner/).
+# Everything else is local development / personal context.
+
+# Personal/local items not for distribution
+.claude/
+tools/
+
+# Linkmap client markers (F:\500_Develop project convention)
+*.client
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Build / distribution
+# Note: blend_autosave_cleaner/wheels/*.whl is intentionally tracked
+# (required runtime dependency bundled by Blender Extension manifest).
+*.zip
+dist/
+build/
+
+# Blender working files (defensive — repo must not contain .blend files)
+*.blend
+*.blend1
+*.blend2
+*.blend@
+
+# Logs
+*.log
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

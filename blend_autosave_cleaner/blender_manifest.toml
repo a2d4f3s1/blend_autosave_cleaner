@@ -1,0 +1,26 @@
+schema_version = "1.0.0"
+
+id = "blend_autosave_cleaner"
+version = "1.0.0"
+name = "Blend Autosave Cleaner"
+tagline = "Delete old autosave .blend files from the temp folder"
+maintainer = "a2d4f3s1"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-2.0-or-later",
+]
+copyright = [
+  "2026 a2d4f3s1",
+]
+
+tags = ["System"]
+
+wheels = [
+  "./wheels/send2trash-2.1.0-py3-none-any.whl",
+]
+
+[permissions]
+files = "Delete old autosave files in the temporary folder"
