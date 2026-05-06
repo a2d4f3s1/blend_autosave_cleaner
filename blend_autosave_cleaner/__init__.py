@@ -2,6 +2,7 @@
 
 import os
 import platform
+import re
 import subprocess
 import tempfile
 import time
@@ -22,6 +23,7 @@ ADDON_ID = __package__
 LOG_FILENAME = "blend_autosave_cleaner.log"
 LOG_MAX_LINES = 100
 SECONDS_PER_DAY = 86400.0
+_BLEND_VERSION_PATTERN = re.compile(r"^\.blend\d+$")
 
 
 def _resolve_temp_dir() -> Path:
@@ -42,10 +44,8 @@ def _is_target(path: Path, prefs) -> bool:
     suffix = path.suffix.lower()
     if suffix == ".blend":
         return prefs.target_blend
-    if suffix == ".blend1":
-        return prefs.target_blend1
-    if suffix == ".blend2":
-        return prefs.target_blend2
+    if _BLEND_VERSION_PATTERN.match(suffix):
+        return prefs.target_blend_versions
     return False
 
 
@@ -208,8 +208,11 @@ class BAC_AddonPreferences(AddonPreferences):
     )
 
     target_blend: BoolProperty(name=".blend", default=True)
-    target_blend1: BoolProperty(name=".blend1", default=True)
-    target_blend2: BoolProperty(name=".blend2", default=True)
+    target_blend_versions: BoolProperty(
+        name=".blend[N]",
+        description="Numbered backup files (.blend1, .blend2, ..., .blend32)",
+        default=True,
+    )
     target_quit: BoolProperty(name="quit.blend", default=True)
 
     use_recycle_bin: BoolProperty(
@@ -252,8 +255,7 @@ class BAC_AddonPreferences(AddonPreferences):
         box.label(text="Target file types")
         row = box.row(align=True)
         row.prop(self, "target_blend")
-        row.prop(self, "target_blend1")
-        row.prop(self, "target_blend2")
+        row.prop(self, "target_blend_versions")
         row.prop(self, "target_quit")
 
         box = layout.box()
@@ -282,6 +284,8 @@ TRANSLATIONS = {
         ("*", "Retention Days"): "保持日数",
         ("*", "Files older than this many days are deleted (0 = disabled)"):
             "この日数より古いファイルを削除（0 で無効）",
+        ("*", "Numbered backup files (.blend1, .blend2, ..., .blend32)"):
+            "連番バックアップファイル（.blend1, .blend2, ..., .blend32）",
         ("*", "Send to Recycle Bin"): "ごみ箱に送る",
         ("*", "Move files to the OS recycle bin instead of deleting permanently"):
             "完全削除せず OS のごみ箱に送る",

@@ -19,8 +19,7 @@ Preferences で以下を調整できます。
 | 項目 | 既定値 | 説明 |
 |---|---|---|
 | Target `.blend` | ON | autosave 形式の `.blend` を対象に |
-| Target `.blend1` | ON | バックアップ `.blend1` を対象に |
-| Target `.blend2` | ON | バックアップ `.blend2` を対象に |
+| Target `.blend[N]` | ON | 連番バックアップ `.blend1` / `.blend2` / ... / `.blend32` をまとめて対象に |
 | Target `quit.blend` | ON | 終了時セーブを対象に |
 
 ### 動作（Behavior）
@@ -69,6 +68,9 @@ Preferences で以下を調整できます。
     ライセンス全文: [`LICENSES/Send2Trash-LICENSE`](LICENSES/Send2Trash-LICENSE)
 
 ## 【更新履歴】
+
+#### [1.1.0] (2026-05)
+- 連番バックアップ対象を `.blend1` / `.blend2` 個別指定 → `.blend[N]` 1項目に統合（`.blend32` まで対応）
 
 #### [1.0.0] (2026-05)
 - 初回リリース
