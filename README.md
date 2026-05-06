@@ -24,7 +24,7 @@ Preferences で以下を調整できます。
 | Send to Recycle Bin（ごみ箱に送る） | ON | OS のごみ箱に送る（OFF で完全削除） |
 | Run on Blender startup（起動時に実行） | ON | Blender 起動時に自動実行 |
 | Confirm before deletion（削除前に確認） | OFF | 削除前にダイアログを表示 |
-| Dry Run（ドライラン） | OFF | 削除せずログのみ記録 |
+| Dry Run（ドライラン） | **ON** | 削除せずログのみ記録（**初回安全のため既定 ON**。本削除するには OFF へ）|
 | Enable log file（ログを有効化） | ON | 実行ログを `<temp>/blend_autosave_cleaner.log` に追記（直近100行のみ保持） |
 
 ## 【使用方法】
@@ -33,11 +33,13 @@ Preferences で以下を調整できます。
 - **手動**: Preferences の `Clean Now` ボタンで即時実行
 - **Tempフォルダを開く**: `Open Temp Folder` ボタンで対象フォルダを開きます
 
+> ⚠️ **インストール直後は `Dry Run` が ON になっています**。意図せずファイルが消えないようにするための初期設定です。本削除するには Preferences で `Dry Run` を OFF にしてください。
+
 ### 初回利用時の推奨手順
 
-1. `Dry Run` を **ON** にして `Clean Now` を実行
-2. ステータスバーの結果（`Deleted N file(s) (X MB), dry run`）と `<temp>/blend_autosave_cleaner.log` を確認
-3. 問題なければ `Dry Run` を **OFF** に戻して本実行
+1. インストール直後の状態（`Dry Run` ON）のまま `Clean Now` を実行
+2. ステータスバーの結果（`Deleted N file(s) (X MB), dry run`）と `<temp>/blend_autosave_cleaner.log` で対象を確認
+3. 問題なければ `Dry Run` を **OFF** に切り替えて本実行
 
 ## 【削除対象】
 

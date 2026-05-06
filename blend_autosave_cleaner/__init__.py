@@ -230,7 +230,7 @@ class BAC_AddonPreferences(AddonPreferences):
     dry_run: BoolProperty(
         name="Dry Run",
         description="Log what would be deleted without actually deleting",
-        default=False,
+        default=True,
     )
     enable_log: BoolProperty(
         name="Enable log file",
